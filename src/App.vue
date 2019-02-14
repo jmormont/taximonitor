@@ -30,13 +30,7 @@
         <span >Монитор</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        flat
-      >
-        Войти2
-        
-      </v-btn>
-      <auth></auth>
+      <auth-btn></auth-btn>
     </v-toolbar>
 
     <v-content>
@@ -47,17 +41,30 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
-import Auth from './components/Auth'
+import AuthBtn from './components/AuthBtn'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld, Auth
+    HelloWorld, AuthBtn
   },
   data () {
     return {
       drawer: null
     }
+  },
+  mounted() {
+    var config = {
+      apiKey: "AIzaSyBoN5S0L48In_peNTm5x1RkShK1n_MBsb8",
+      authDomain: "yandextaxi.firebaseapp.com",
+      databaseURL: "https://yandextaxi.firebaseio.com",
+      projectId: "yandextaxi",
+      storageBucket: "yandextaxi.appspot.com",
+      messagingSenderId: "208720131553"
+    }
+    firebase.initializeApp(config)
+    window.firebase = firebase
+    window.db = firebase.firestore
   }
 }
 </script>
